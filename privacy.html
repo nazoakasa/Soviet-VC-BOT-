@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー — Soviet Bot</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500&display=swap');
+
+    :root {
+      --red: #B71C1C;
+      --red-dark: #7F0000;
+      --gold: #C9A84C;
+      --bg: #0E0E0E;
+      --surface: #161616;
+      --border: #2A2A2A;
+      --text: #E8E8E8;
+      --muted: #888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 40px 0 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red-dark), var(--red), var(--gold), var(--red), var(--red-dark));
+    }
+
+    .star {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 12px;
+      color: var(--gold);
+    }
+
+    header h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+
+    header p {
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 4px 12px;
+      border-radius: 2px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--text); }
+    nav a.active { color: var(--gold); border-bottom: 1px solid var(--gold); }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .updated {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      letter-spacing: 0.05em;
+    }
+
+    section {
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 .num {
+      font-size: 11px;
+      color: var(--red);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      border: 1px solid var(--red);
+      padding: 1px 6px;
+      border-radius: 2px;
+    }
+
+    p { color: #ccc; margin-bottom: 12px; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      color: #ccc;
+      padding: 8px 0 8px 20px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      font-size: 14px;
+    }
+
+    ul li:last-child { border-bottom: none; }
+
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+
+    .data-table th {
+      text-align: left;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      font-weight: 500;
+    }
+
+    .data-table td {
+      font-size: 14px;
+      color: #ccc;
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .data-table td:first-child {
+      color: var(--gold);
+      font-family: monospace;
+      font-size: 13px;
+      white-space: nowrap;
+      width: 180px;
+    }
+
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="star">★</span>
+  <h1>Soviet Bot</h1>
+  <p>DISCORD BOT</p>
+</header>
+
+<nav>
+  <a href="terms.html">利用規約</a>
+  <a href="privacy.html" class="active">プライバシーポリシー</a>
+</nav>
+
+<main>
+  <p class="updated">最終更新日: 2026年6月27日</p>
+
+  <section>
+    <h2><span class="num">01</span>収集する情報</h2>
+    <p>本Botは以下の情報を収集・保存します。</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>データ</th>
+          <th>用途</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Discord ユーザーID</td>
+          <td>ユーザーを一意に識別するために使用します。</td>
+        </tr>
+        <tr>
+          <td>Discord ユーザー名</td>
+          <td>ランキング表示のために使用します。</td>
+        </tr>
+        <tr>
+          <td>リスニング記録</td>
+          <td>再生回数・再生時間の累計を記録します。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span>情報の利用目的</h2>
+    <p>収集した情報は以下の目的にのみ使用します。</p>
+    <ul>
+      <li><code>/listeningreport</code> コマンドによる個人のリスニング統計の表示</li>
+      <li><code>/ranking</code> コマンドによる全体ランキングの表示</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span>情報の保存</h2>
+    <ul>
+      <li>データはBotが動作するサーバー内（SQLiteデータベース）にのみ保存されます。</li>
+      <li>第三者への提供・販売は一切行いません。</li>
+      <li>外部サービスへのデータ送信は行いません。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span>データの削除</h2>
+    <p>以下の方法でデータの削除を行えます。</p>
+    <ul>
+      <li>サーバー管理者が <code>/delete-record</code> コマンドで特定ユーザーのデータを削除できます。</li>
+      <li>削除を希望する場合は、サーバー管理者または開発者にお問い合わせください。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span>Discordのデータポリシー</h2>
+    <p>本BotはDiscord APIを通じて動作します。Discordによるデータの取り扱いについては、<a href="https://discord.com/privacy" target="_blank">Discordのプライバシーポリシー</a>をご参照ください。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span>ポリシーの変更</h2>
+    <p>本ポリシーは予告なく変更される場合があります。重要な変更がある場合は可能な限りお知らせします。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span>お問い合わせ</h2>
+    <p>データの取り扱いに関するお問い合わせは、Discordサーバーまたは開発者までご連絡ください。</p>
+  </section>
+</main>
+
+<footer>
+  © Soviet Bot — ソビエト連邦万歳
+</footer>
+
+</body>
+</html>
