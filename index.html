@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soviet Bot</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --red: #B71C1C;
+      --red-bright: #E53935;
+      --red-dark: #7F0000;
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --bg: #0A0A0A;
+      --surface: #141414;
+      --surface2: #1A1A1A;
+      --border: #242424;
+      --text: #E8E8E8;
+      --muted: #777;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      padding: 40px 24px 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.06em;
+    }
+
+    .logo .star { color: var(--gold); font-size: 22px; }
+
+    header nav { display: flex; gap: 24px; align-items: center; }
+    header nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    header nav a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 100px 24px 90px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero::before {
+      content: '★';
+      position: absolute;
+      font-size: 600px;
+      color: rgba(183, 28, 28, 0.04);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--red-bright);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(38px, 7vw, 72px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: #fff;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 48px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 32px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--red-bright); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 12px 32px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border: 1px solid var(--gold);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { background: var(--gold); color: #000; }
+
+    /* ── SECTION COMMON ── */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--red-bright);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 48px;
+    }
+
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .feature-card {
+      background: var(--surface);
+      padding: 32px;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── COMMANDS ── */
+    .commands-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .command-row {
+      background: var(--surface);
+      display: grid;
+      grid-template-columns: 240px 1fr auto;
+      align-items: center;
+      padding: 20px 24px;
+      gap: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .command-row { grid-template-columns: 1fr; gap: 8px; }
+      .command-badge { justify-self: start; }
+    }
+
+    .command-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .command-desc {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .command-badge {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      padding: 3px 8px;
+      border-radius: 2px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .badge-public { background: rgba(183,28,28,0.2); color: var(--red-bright); border: 1px solid rgba(183,28,28,0.3); }
+    .badge-owner  { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+
+    /* ── STATS ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .stat-card {
+      background: var(--surface);
+      padding: 36px 32px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 42px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-num span { color: var(--gold); }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      text-align: center;
+      padding: 100px 24px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--red), var(--gold), var(--red), transparent);
+    }
+
+    .cta h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      margin-bottom: 40px;
+      font-size: 14px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer .copy {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    footer nav { display: flex; gap: 20px; }
+    footer nav a {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    footer nav a:hover { color: var(--text); }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      height: 3px;
+      background: linear-gradient(90deg, var(--red-dark), var(--red), var(--gold), var(--red), var(--red-dark));
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar"></div>
+
+<header>
+  <div class="logo">
+    <span class="star">★</span>
+    Soviet Bot
+  </div>
+  <nav>
+    <a href="#features">機能</a>
+    <a href="#commands">コマンド</a>
+    <a href="terms.html">利用規約</a>
+    <a href="privacy.html">プライバシー</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">DISCORD BOT</p>
+  <h1>同志よ、<span>ソ連国歌</span>を<br>響かせるのだ。</h1>
+  <p class="hero-sub">ボイスチャンネルにて偉大なるソビエト連邦国歌を粛々と再生し、リスニング記録を刻む。</p>
+  <div class="hero-buttons">
+    <a href="YOUR_INVITE_URL" class="btn-primary">サーバーに導入する</a>
+    <a href="YOUR_SUPPORT_SERVER_URL" class="btn-secondary">サポートサーバー</a>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <p class="section-label">FEATURES</p>
+  <h2 class="section-title">機能</h2>
+  <p class="section-desc">同志のために用意された機能一覧</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🎵</div>
+      <h3>国歌の再生</h3>
+      <p>ボイスチャンネルに参加してソ連国歌をリピート再生する。1%の確率でロシア国歌が流れることも。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>リスニング記録</h3>
+      <p>1周ごとに再生回数と総再生時間を記録。自分がどれだけ国歌を聴いたか把握できる。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏆</div>
+      <h3>ランキング</h3>
+      <p>全ユーザー横断で総再生時間のランキングを表示。誰が最も忠実な同志かが一目でわかる。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📜</div>
+      <h3>歌詞の送信</h3>
+      <p>ソ連国歌の歌詞をDMに送付する。覚えて声に出して歌うのだ、同志よ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMMANDS -->
+<section id="commands">
+  <p class="section-label">COMMANDS</p>
+  <h2 class="section-title">コマンド一覧</h2>
+  <p class="section-desc">スラッシュコマンドで操作する</p>
+  <div class="commands-list">
+    <div class="command-row">
+      <span class="command-name">/soviet</span>
+      <span class="command-desc">いるVCに参加してソ連国歌をリピート再生する</span>
+      <span class="command-badge badge-public">PUBLIC</span>
+    </div>
+    <div class="command-row">
+      <span class="command-name">/soviet-stop</span>
+      <span class="command-desc">再生を停止してVCから退出する</span>
+      <span class="command-badge badge-public">PUBLIC</span>
+    </div>
+    <div class="command-row">
+      <span class="command-name">/lyrics</span>
+      <span class="command-desc">ソ連国歌の歌詞をDMに送付する（30秒クールダウン）</span>
+      <span class="command-badge badge-public">PUBLIC</span>
+    </div>
+    <div class="command-row">
+      <span class="command-name">/listeningreport</span>
+      <span class="command-desc">自分の再生回数・総再生時間をDMに送る</span>
+      <span class="command-badge badge-public">PUBLIC</span>
+    </div>
+    <div class="command-row">
+      <span class="command-name">/ranking</span>
+      <span class="command-desc">総再生時間の全体ランキング上位10名を表示する</span>
+      <span class="command-badge badge-public">PUBLIC</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>今すぐ導入するのだ、同志よ。</h2>
+  <p>ソビエト連邦国歌があなたのサーバーを満たす。</p>
+  <div class="hero-buttons">
+    <a href="YOUR_INVITE_URL" class="btn-primary">サーバーに導入する</a>
+    <a href="YOUR_SUPPORT_SERVER_URL" class="btn-secondary">サポートサーバー</a>
+  </div>
+</div>
+
+<footer>
+  <span class="copy">© Soviet Bot — ソビエト連邦万歳</span>
+  <nav>
+    <a href="terms.html">利用規約</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="YOUR_SUPPORT_SERVER_URL">サポート</a>
+  </nav>
+</footer>
+
+</body>
+</html>
